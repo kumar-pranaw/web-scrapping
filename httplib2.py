@@ -6,7 +6,7 @@ bin_url = 'https://httpbin.org/'
 
 webbrowser.open(bin_url)
 
-http = httplib2.Http
+http = httplib2.http
 
 resp, data = http.request(bin_url,  method = 'POST')
 
