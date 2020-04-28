@@ -1,0 +1,339 @@
+PS C:\Users\pranav.verma> scrapy shell https://webnots.com/basics-of-a-static-website/                                                                                                                                                                                                           PS C:\Users\pranav.verma> scrapy shell https://webnots.com/basics-of-a-static-website/                                                                                                                                                       2020-04-28 13:32:23 [scrapy.utils.log] INFO: Scrapy 2.1.0 started (bot: scrapybot)
+2020-04-28 13:32:23 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 20.3.0, Python 3.8.1 (tags/v3.8.1:1b293b6, Dec 18 2019, 23:11:46) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.9.2, Platform Windows-10-10.0.18362-SP0
+2020-04-28 13:32:23 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2020-04-28 13:32:23 [scrapy.crawler] INFO: Overridden settings:
+{'DUPEFILTER_CLASS': 'scrapy.dupefilters.BaseDupeFilter',
+ 'LOGSTATS_INTERVAL': 0}
+2020-04-28 13:32:23 [scrapy.extensions.telnet] INFO: Telnet Password: b3f461d739fcb415
+2020-04-28 13:32:23 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole']
+2020-04-28 13:32:23 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2020-04-28 13:32:23 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2020-04-28 13:32:23 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2020-04-28 13:32:23 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2020-04-28 13:32:23 [scrapy.core.engine] INFO: Spider opened
+2020-04-28 13:32:24 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to <GET https://www.webnots.com/basics-of-a-static-website/> from <GET https://webnots.com/basics-of-a-static-website/>
+2020-04-28 13:32:25 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.webnots.com/basics-of-a-static-website/> (referer: None)
+2020-04-28 13:32:26 [asyncio] DEBUG: Using proactor: IocpProactor
+[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    <scrapy.crawler.Crawler object at 0x00000255157AFB20>
+[s]   item       {}
+[s]   request    <GET https://webnots.com/basics-of-a-static-website/>
+[s]   response   <200 https://www.webnots.com/basics-of-a-static-website/>
+[s]   settings   <scrapy.settings.Settings object at 0x00000255157AF2E0>
+[s]   spider     <DefaultSpider 'default' at 0x25515cbaf70>
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser
+2020-04-28 13:32:26 [asyncio] DEBUG: Using proactor: IocpProactor
+In [1]: response
+Out[1]: <200 https://www.webnots.com/basics-of-a-static-website/>
+
+In [2]: response.status
+Out[2]: 200
+
+In [3]: response.urk
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-3-887d0cb053b0> in <module>
+----> 1 response.urk
+
+AttributeError: 'HtmlResponse' object has no attribute 'urk'
+
+In [4]: response.url
+Out[4]: 'https://www.webnots.com/basics-of-a-static-website/'
+
+In [5]: response.css('title')
+Out[5]: [<Selector xpath='descendant-or-self::title' data='<title>What is Static Website, Struct...'>]
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [6]: response.css('title')
+Out[6]: [<Selector xpath='descendant-or-self::title' data='<title>What is Static Website, Struct...'>]
+
+In [7]:
+
+In [7]: response.css('title').get()
+Out[7]: '<title>What is Static Website, Structure and How to Create? » WebNots</title>'
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [8]: response.css('title').get()
+Out[8]: '<title>What is Static Website, Structure and How to Create? » WebNots</title>'
+
+In [9]: response.css('title::text').get()
+Out[9]: 'What is Static Website, Structure and How to Create? » WebNots'
+
+In [10]: response.css('p::text').get()
+Out[10]: 'As the name indicates static websites deliver the same content whenever you visit. It can be defined as below:'
+
+In [11]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-11-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+In [12]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-12-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [13]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-13-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+In [14]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-14-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [15]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-15-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+In [16]: response.css('p::text').getAll()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-16-76505ae008ba> in <module>
+----> 1 response.css('p::text').getAll()
+
+AttributeError: 'SelectorList' object has no attribute 'getAll'
+
+In [17]: response.css('p::text').getall()
+Out[17]:
+['As the name indicates static websites deliver the same content whenever you visit. It can be defined as below:',
+ 'A static website or a webpage is a collection of items like text, images and multimedia elements containing marked up content created with Hyper Text Markup Language (',
+ ') and stored in a web server.',
+ 'The browser retrieves the content from the server when a visitor enters the URL of a static site. The retrieved content is then interpreted to display it as an attractive site on the browser window.',
+ 'Basically both static and\xa0',
+ '\xa0works in a similar manner. But the bigger difference is that the static page is a single page contains all information while a dynamic page is assembly of many single pages. You can check out the article on\xa0',
+ '\xa0to compare the features of static and dynamic websites.',
+ 'We will discuss the following topics in this article:',
+ 'There are many ready made frameworks available for creating a static webpage. For example, ',
+ ' is one of the popular free open source framework you can use to create static webpages. However, it is very easy to create a static webpage on your own. Follow the below steps to create a simple static web page.',
+ 'In this example the content is located on your own local computer hence no server is required separately. (This means the local computer acts as a client as well as a server).',
+ 'Below is how the HTML file will look when opened with ',
+ '.',
+ 'Notice the content of the original file and the look in the browser. The browser converted all the HTML tags and displays only the marked up content excluding space between lines. For example, the content in between the h1 tags is interpreted as a heading during the display in the browser window. The browser loads the same content every time you open the file since there is no interactive processing neither at server nor at browser side.',
+ 'For a real case in the internet, the HTML file will be located on a web server with a page name on the domain like “',
+ '“. The web page will open in the browser window when a visitor enters this URL directly on the browser address bar or when this URL is redirected from a search result.',
+ 'A static webpage contains all the required information to be displayed on that page. Let us take an example of a simple blog page with the name “blog-post.html” as shown below. When this page is a static page then all content relevant to header, main content area, footer and sidebar are available within the “blog-post.html” page. You can right click and ',
+ ' to find all relevant details.',
+ 'The easiest way to create live static webpage is to create a HTML page as explained above. Then upload the HTML page and relevant linked resources like images and stylesheets to the web server using ',
+ '. As mentioned, there are also pre-compiled frontend frameworks like ',
+ ' will help you to create static pages quickly by reusing built-in blocks. You can view the demo ',
+ ' with some dynamic scripts for form data processing.',
+ 'The last option is to use ',
+ ' like ',
+ ', Wix and Yola. All these service providers offer free service with limited features. You can upgrade to paid service to get complete features. Most of these tools offer combination of static and dynamic pages for building a complete website with large number of pages.',
+ 'There are advanced content management systems like ',
+ ', Joomla and Drupal for building more sophisticated ',
+ '.',
+ ' ',
+ '.',
+ 'Static websites have many advantages in this mobile world:',
+ 'Nowadays you simply can’t have standalone static site with fixed content.',
+ 'Static websites offer simple yet powerful presentation of content. This is more suitable for people create one time content with few pages in order to have website for showcasing purposes. It is not possible to manage a static site with hundreds of pages and offer customized content to different user base. You have to choose appropriate content management systems for managing dynamic large scale websites in an effective manner.',
+ ' Editorial Staff at WebNots are team members who love to build websites and share the learning with webmasters community.',
+ ' What is Twitter? Social networking sites are the simple way[...]',
+ ' The entire web works based on HTTP protocol. The browser[...]',
+ ' Weebly\xa0not only offers the possibility of building your site in[...]',
+ 'Very well explained and structured. It has everything that I wanted to know. Thank you.',
+ 'this helped with my school hw – thanks fam',
+ ' ',
+ ' ',
+ 'Have a query? Send to us.',
+ 'WebNots is a knowledge sharing platform for webmasters and tech geeks.\xa0We have published 1000+ free articles focusing on website building and technology. We share our experience and knowledge through blog articles, demos, eBooks, videos and glossary terms for the benefit of webmasters and tech community.',
+ '© 2020 · WebNots Web Consulting Services',
+ 'Type and press Enter to search']
+
+In [18]: response.css('p::text').extract()
+Out[18]:
+['As the name indicates static websites deliver the same content whenever you visit. It can be defined as below:',
+ 'A static website or a webpage is a collection of items like text, images and multimedia elements containing marked up content created with Hyper Text Markup Language (',
+ ') and stored in a web server.',
+ 'The browser retrieves the content from the server when a visitor enters the URL of a static site. The retrieved content is then interpreted to display it as an attractive site on the browser window.',
+ 'Basically both static and\xa0',
+ '\xa0works in a similar manner. But the bigger difference is that the static page is a single page contains all information while a dynamic page is assembly of many single pages. You can check out the article on\xa0',
+ '\xa0to compare the features of static and dynamic websites.',
+ 'We will discuss the following topics in this article:',
+ 'There are many ready made frameworks available for creating a static webpage. For example, ',
+ ' is one of the popular free open source framework you can use to create static webpages. However, it is very easy to create a static webpage on your own. Follow the below steps to create a simple static web page.',
+ 'In this example the content is located on your own local computer hence no server is required separately. (This means the local computer acts as a client as well as a server).',
+ 'Below is how the HTML file will look when opened with ',
+ '.',
+ 'Notice the content of the original file and the look in the browser. The browser converted all the HTML tags and displays only the marked up content excluding space between lines. For example, the content in between the h1 tags is interpreted as a heading during the display in the browser window. The browser loads the same content every time you open the file since there is no interactive processing neither at server nor at browser side.',
+ 'For a real case in the internet, the HTML file will be located on a web server with a page name on the domain like “',
+ '“. The web page will open in the browser window when a visitor enters this URL directly on the browser address bar or when this URL is redirected from a search result.',
+ 'A static webpage contains all the required information to be displayed on that page. Let us take an example of a simple blog page with the name “blog-post.html” as shown below. When this page is a static page then all content relevant to header, main content area, footer and sidebar are available within the “blog-post.html” page. You can right click and ',
+ ' to find all relevant details.',
+ 'The easiest way to create live static webpage is to create a HTML page as explained above. Then upload the HTML page and relevant linked resources like images and stylesheets to the web server using ',
+ '. As mentioned, there are also pre-compiled frontend frameworks like ',
+ ' will help you to create static pages quickly by reusing built-in blocks. You can view the demo ',
+ ' with some dynamic scripts for form data processing.',
+ 'The last option is to use ',
+ ' like ',
+ ', Wix and Yola. All these service providers offer free service with limited features. You can upgrade to paid service to get complete features. Most of these tools offer combination of static and dynamic pages for building a complete website with large number of pages.',
+ 'There are advanced content management systems like ',
+ ', Joomla and Drupal for building more sophisticated ',
+ '.',
+ ' ',
+ '.',
+ 'Static websites have many advantages in this mobile world:',
+ 'Nowadays you simply can’t have standalone static site with fixed content.',
+ 'Static websites offer simple yet powerful presentation of content. This is more suitable for people create one time content with few pages in order to have website for showcasing purposes. It is not possible to manage a static site with hundreds of pages and offer customized content to different user base. You have to choose appropriate content management systems for managing dynamic large scale websites in an effective manner.',
+ ' Editorial Staff at WebNots are team members who love to build websites and share the learning with webmasters community.',
+ ' What is Twitter? Social networking sites are the simple way[...]',
+ ' The entire web works based on HTTP protocol. The browser[...]',
+ ' Weebly\xa0not only offers the possibility of building your site in[...]',
+ 'Very well explained and structured. It has everything that I wanted to know. Thank you.',
+ 'this helped with my school hw – thanks fam',
+ ' ',
+ ' ',
+ 'Have a query? Send to us.',
+ 'WebNots is a knowledge sharing platform for webmasters and tech geeks.\xa0We have published 1000+ free articles focusing on website building and technology. We share our experience and knowledge through blog articles, demos, eBooks, videos and glossary terms for the benefit of webmasters and tech community.',
+ '© 2020 · WebNots Web Consulting Services',
+ 'Type and press Enter to search']
+
+In [19]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li').extract()
+Out[19]:
+['<li>Static website features</li>',
+ '<li>Creating a static page</li>',
+ '<li>Check sample page on browser</li>',
+ '<li>Details of static webpage</li>',
+ '<li>Creating live static sites</li>',
+ '<li>Pros and cons of static websites</li>']
+
+In [20]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract()
+Out[20]:
+['Static website features',
+ 'Creating a static page',
+ 'Check sample page on browser',
+ 'Details of static webpage',
+ 'Creating live static sites',
+ 'Pros and cons of static websites']
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...'
+
+In [21]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract()
+Out[21]:
+['Static website features',
+ 'Creating a static page',
+ 'Check sample page on browser',
+ 'Details of static webpage',
+ 'Creating live static sites',
+ 'Pros and cons of static websites']
+
+In [22]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract_FIRST()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-22-003cdacf0675> in <module>
+----> 1 response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract_FIRST()
+
+AttributeError: 'SelectorList' object has no attribute 'extract_FIRST'
+
+In [23]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract_first()
+Out[23]: 'Static website features'
+
+
+Unhandled exception in event loop:
+  File "c:\python38\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "c:\python38\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "c:\python38\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [24]:  response.css('#post-149 > div > div.entry-content.clearfix > div.sue-panel > div > ol > li::text').extract_first()
+Out[24]: 'Static website features'
+
+In [25]:   
