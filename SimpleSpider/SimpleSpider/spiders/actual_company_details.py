@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+fileName = 'actual_company_details.txt'
 
-class CompanyDetailsSpider(scrapy.Spider):
-    name = 'company_details'
+class ActualCompanyDetailsSpider(scrapy.Spider):
+    name = 'actual_company_details'
     allowed_domains = ['finance.yahoo.com']
     start_urls = ['http://finance.yahoo.com/sector/ms_technology']
 
@@ -11,10 +12,8 @@ class CompanyDetailsSpider(scrapy.Spider):
         company_names_list =  response.xpath('//*[@id="scr-res-table"]/div[1]/table/tbody/tr/td[2]/text()').extract()
         company_price_list = response.xpath('//*[@id="scr-res-table"]/div[1]/table/tbody/tr/td[3]/span/text()').extract()
         company_change_list = response.xpath('//*[@id="scr-res-table"]/div[1]/table/tbody/tr/td[4]/span/text()').extract()
-
-        countCompanyName = len(company_names_list)
         
-        print('Total count is : ', countCompanyName)
-        
-        for i in range(0, countCompanyName):
-            print(company_names_list[i], company_price_list[i], company_change_list[i])
+        count = len(company_names_list)
+        with open(fileName, '+a') as file:
+            for i in range(0, count):
+                file.write(company_names_list[i] + ' , ' + company_price_list[i] + ' , ' + company_change_list[i])
